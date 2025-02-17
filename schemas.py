@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 class EmpresaBase(BaseModel):
     nome: str
@@ -13,8 +13,7 @@ class EmpresaCreate(EmpresaBase):
 class EmpresaOut(EmpresaBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)  # ✅ Correção aqui
 
 class ObrigacaoAcessoriaBase(BaseModel):
     nome: str
@@ -27,5 +26,4 @@ class ObrigacaoAcessoriaCreate(ObrigacaoAcessoriaBase):
 class ObrigacaoAcessoriaOut(ObrigacaoAcessoriaBase):
     id: int
 
-    class Config:
-       from_attributes = True
+    model_config = ConfigDict(from_attributes=True)  
